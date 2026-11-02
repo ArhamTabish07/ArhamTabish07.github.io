@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Arham Tabish, Associate Software Engineer working on SmartHCM with Flutter and .NET. Karachi, Pakistan.">
+<title>Arham Tabish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one left-aligned column. Hero with a "current role" panel, then a SmartHCM case study with a system map, experience, other work, skills, education, contact. */
+:root {
+  --bg: #f3f6f9;
+  --surface: #ffffff;
+  --ink: #132130;
+  --muted: #526377;
+  --line: #d8e1ea;
+  --accent: #0a5fb8;
+  --accent-ink: #ffffff;
+  --accent-soft: #e3eefa;
+  --feature: #0f2236;
+  --feature-ink: #e7f0f8;
+  --feature-muted: #9db3c8;
+  --feature-line: #284460;
+  --feature-accent: #6cc0ff;
+  --font-display: "Familjen Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b131b; --surface: #111c27; --ink: #e5edf5; --muted: #95a8bb; --line: #213242;
+    --accent: #5fb3f4; --accent-ink: #08121b; --accent-soft: #14304a;
+    --feature: #0e2133; --feature-ink: #e7f0f8; --feature-muted: #9db3c8; --feature-line: #2a4864; --feature-accent: #6cc0ff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b131b; --surface: #111c27; --ink: #e5edf5; --muted: #95a8bb; --line: #213242;
+  --accent: #5fb3f4; --accent-ink: #08121b; --accent-soft: #14304a;
+  --feature: #0e2133; --feature-ink: #e7f0f8; --feature-muted: #9db3c8; --feature-line: #2a4864; --feature-accent: #6cc0ff;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+.wrap {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 56px;
+  display: grid; gap: 72px;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+p { margin: 0; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.label {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Top bar */
+.topbar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.mark { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.nav { display: flex; flex-wrap: wrap; gap: 18px; font-size: 14px; }
+.nav a { color: var(--muted); text-decoration: none; }
+.nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 44px; align-items: center; }
+.hero > * { min-width: 0; }
+.hero-text { display: grid; gap: 18px; }
+.hero h1 { font-size: clamp(42px, 7vw, 66px); font-weight: 700; letter-spacing: -0.025em; }
+.role { font-family: var(--font-display); font-size: clamp(19px, 2.6vw, 24px); font-weight: 600; }
+.role span { color: var(--accent); }
+.intro { color: var(--muted); max-width: 58ch; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 500 14px var(--font-body); padding: 10px 16px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+
+.now {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px; display: grid; gap: 16px;
+}
+.now-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pill {
+  font: 500 11.5px var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--accent-soft); color: var(--accent); padding: 3px 10px; border-radius: 99px;
+}
+.now h2 { font-size: 22px; }
+.now .org { color: var(--muted); margin-top: 2px; }
+.path { display: grid; gap: 0; border-left: 2px solid var(--line); margin-left: 5px; }
+.step { position: relative; padding: 0 0 12px 18px; font-size: 14.5px; }
+.step:last-child { padding-bottom: 0; }
+.step::before {
+  content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--muted);
+}
+.step.on::before { background: var(--accent); border-color: var(--accent); }
+.step b { font-weight: 600; }
+.step .when { font: 12.5px var(--font-mono); color: var(--muted); display: block; }
+
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding-top: 14px; border-top: 1px solid var(--line); }
+.stat b { display: block; font-family: var(--font-display); font-size: 24px; line-height: 1.1; }
+.stat span { font-size: 12.5px; color: var(--muted); }
+
+/* Sections */
+section { display: grid; gap: 24px; }
+section > header { display: grid; gap: 6px; }
+section h2 { font-size: clamp(26px, 3.6vw, 34px); font-weight: 700; letter-spacing: -0.015em; }
+.lead { color: var(--muted); max-width: 64ch; }
+
+/* SmartHCM feature */
+.feature {
+  background: var(--feature); color: var(--feature-ink); border-radius: 18px;
+  padding: clamp(22px, 4vw, 40px); display: grid; gap: 28px;
+}
+.feature .label { color: var(--feature-muted); }
+.feature h2 { font-size: clamp(28px, 4vw, 40px); }
+.feature .lead { color: var(--feature-muted); }
+.modules { display: flex; flex-wrap: wrap; gap: 8px; }
+.module {
+  font: 12.5px var(--font-mono); padding: 4px 10px; border-radius: 6px;
+  border: 1px solid var(--feature-line); color: var(--feature-ink);
+}
+.sysmap { display: grid; gap: 10px; }
+.sysmap .cap { font: 12px var(--font-mono); color: var(--feature-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.flow { display: grid; grid-template-columns: minmax(0, 1fr) 36px minmax(0, 1fr) 36px minmax(0, 1fr); align-items: center; gap: 0; }
+.clients { display: grid; gap: 10px; }
+.node {
+  border: 1px solid var(--feature-line); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px;
+  background: rgba(255,255,255,0.03);
+}
+.node b { font-family: var(--font-display); font-size: 16px; font-weight: 600; }
+.node span { font: 12.5px var(--font-mono); color: var(--feature-accent); }
+.arrow { text-align: center; color: var(--feature-muted); font: 18px var(--font-mono); }
+.contrib { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; }
+.contrib div { display: grid; gap: 4px; padding-top: 12px; border-top: 1px solid var(--feature-line); }
+.contrib h3 { font-size: 16px; font-weight: 600; }
+.contrib p { color: var(--feature-muted); font-size: 14.5px; }
+.feature-foot { font-size: 13.5px; color: var(--feature-muted); }
+.feature-foot a { color: var(--feature-accent); }
+
+/* Experience */
+.company { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+.company:first-of-type { border-top: 0; padding-top: 0; }
+.company-name { display: grid; gap: 4px; align-content: start; }
+.company-name h3 { font-size: 19px; font-weight: 600; }
+.company-name p { color: var(--muted); font-size: 14px; }
+.roles { display: grid; gap: 18px; min-width: 0; }
+.role-item { display: grid; gap: 8px; }
+.role-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
+.role-head h4 { margin: 0; font: 600 17px var(--font-display); }
+.dates { font: 13px var(--font-mono); color: var(--muted); white-space: nowrap; }
+.role-item ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; }
+.role-item li { max-width: 74ch; }
+.promo { font-size: 14px; color: var(--muted); }
+
+/* Other projects */
+.projects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.project {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 20px; display: grid; gap: 10px; align-content: start;
+}
+.project h3 { font-size: 19px; font-weight: 600; }
+.project .kind { font: 12.5px var(--font-mono); color: var(--accent); }
+.project p { color: var(--muted); font-size: 15px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 12px var(--font-mono); padding: 3px 8px; border-radius: 6px; background: var(--accent-soft); color: var(--ink); }
+
+/* Skills */
+.skills { display: grid; border-top: 1px solid var(--line); }
+.skill-row {
+  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px;
+  padding: 14px 0; border-bottom: 1px solid var(--line); align-items: baseline;
+}
+.skill-row h3 { font-size: 16px; font-weight: 600; }
+
+/* Education */
+.edu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.edu > div { display: grid; gap: 4px; align-content: start; padding-top: 14px; border-top: 2px solid var(--ink); }
+.edu h3 { font-size: 17px; font-weight: 600; }
+.edu p { color: var(--muted); font-size: 15px; }
+
+/* Contact */
+.contact {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  padding: clamp(22px, 4vw, 34px); display: grid; gap: 16px;
+}
+.contact h2 { font-size: clamp(24px, 3.4vw, 32px); }
+.email-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.email { font: 500 16px var(--font-mono); user-select: all; overflow-wrap: anywhere; }
+.copied { font-size: 13px; color: var(--muted); min-height: 1.2em; }
+footer { color: var(--muted); font-size: 13px; }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; }
+  .projects { grid-template-columns: 1fr; }
+  .company { grid-template-columns: 1fr; gap: 12px; }
+  .skill-row { grid-template-columns: 1fr; gap: 6px; }
+  .edu { grid-template-columns: 1fr; }
+  .contrib { grid-template-columns: 1fr; }
+  .flow { grid-template-columns: 1fr; }
+  .arrow { transform: rotate(90deg); line-height: 1; padding: 4px 0; }
+  .wrap { gap: 56px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .nav a { transition: border-color .15s, color .15s; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="mark">Arham Tabish</span>
+    <nav class="nav" aria-label="Sections">
+      <a href="#smarthcm">SmartHCM</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-text">
+      <span class="label">Karachi, Pakistan · Open to on-site, hybrid and remote</span>
+      <h1>Arham Tabish</h1>
+      <p class="role">Associate Software Engineer <span>· Flutter &amp; .NET</span></p>
+      <p class="intro">I build and maintain production software on SmartHCM, a cloud HR and payroll platform, working across its Flutter mobile app, .NET web services, Oracle database and web front end. Before that I worked on Flutter apps for client projects in AI, fintech and healthcare.</p>
+      <div class="links">
+        <a class="btn primary" href="#contact">Contact me</a>
+        <a class="btn" href="https://www.linkedin.com/in/arham-tabish-149450373" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/ArhamTabish07" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <aside class="now" aria-label="Current role">
+      <div class="now-head">
+        <span class="label">Current role</span>
+      </div>
+      <div>
+        <h2>Associate Software Engineer</h2>
+        <p class="org">SofDigital Systems · SmartHCM</p>
+      </div>
+      <div class="path">
+        <div class="step on"><b>Associate Software Engineer</b><span class="when">Oct 2026 – Present</span></div>
+        <div class="step"><b>Jr Flutter Developer, Black Cube Technologies</b><span class="when">Sep 2025 – Jun 2026</span></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>1+ yr</b><span>professional experience</span></div>
+        <div class="stat"><b>2</b><span>companies</span></div>
+        <div class="stat"><b>4</b><span>production apps</span></div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="feature" id="smarthcm">
+    <header>
+      <span class="label">Featured work</span>
+      <h2>SmartHCM</h2>
+      <p class="lead">SmartHCM is a cloud-based HR and payroll platform with a suite of 23 modules, from Core HR to automated payroll, plus mobile apps on iOS and Android. I work on the system end to end: the Flutter app employees use every day, the .NET services behind it, the Oracle database and the web application.</p>
+    </header>
+
+    <div class="modules" aria-label="Main SmartHCM modules">
+      <span class="module">Core HR</span>
+      <span class="module">Payroll, Loans &amp; Funds</span>
+      <span class="module">Time &amp; Attendance</span>
+      <span class="module">Leave Management</span>
+      <span class="module">Training Management</span>
+      <span class="module">Workflow Management</span>
+    </div>
+
+    <div class="sysmap">
+      <span class="cap">Where I work in the system</span>
+      <div class="flow">
+        <div class="clients">
+          <div class="node"><b>SmartHCM Mobile</b><span>Flutter · Dart</span></div>
+          <div class="node"><b>SmartHCM Web</b><span>HTML · CSS · JavaScript</span></div>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node"><b>Web services</b><span>.NET 4.0 · C# · REST</span></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node"><b>Database</b><span>Oracle SQL</span></div>
+      </div>
+    </div>
+
+    <div class="contrib">
+      <div>
+        <h3>Mobile app UI</h3>
+        <p>Build and maintain Flutter screens and connect them to the backend APIs and web services.</p>
+      </div>
+      <div>
+        <h3>Backend and database fixes</h3>
+        <p>Trace issues from the app through the .NET services to Oracle, then fix the defect where it starts.</p>
+      </div>
+      <div>
+        <h3>Web application</h3>
+        <p>Maintain and update parts of the SmartHCM web app in HTML, CSS and JavaScript.</p>
+      </div>
+      <div>
+        <h3>Team delivery</h3>
+        <p>Ship features and fixes with the development team through Git, GitHub and Azure DevOps.</p>
+      </div>
+    </div>
+
+    <p class="feature-foot">Product details are from the public SmartHCM website, <a href="https://smarthcm.cloud" target="_blank" rel="noopener">smarthcm.cloud</a>. The source code is private.</p>
+  </section>
+
+  <section id="experience">
+    <header>
+      <span class="label">Experience</span>
+      <h2>Where I've worked</h2>
+    </header>
+
+    <div class="company">
+      <div class="company-name">
+        <h3>SofDigital Systems (SMC) Pvt. Ltd.</h3>
+        <p>Karachi · On-site</p>
+      </div>
+      <div class="roles">
+        <article class="role-item">
+          <div class="role-head"><h4>Associate Software Engineer</h4><span class="dates">Oct 2026 – Present</span></div>
+          <ul>
+            <li>Develop and maintain the SmartHCM Flutter mobile app and integrate it with .NET web services and REST APIs.</li>
+            <li>Maintain and modify parts of the SmartHCM web application using HTML, CSS and JavaScript.</li>
+            <li>Troubleshoot application and backend issues, debug defects and make Oracle database fixes when needed.</li>
+            <li>Work in Git with GitHub and Azure DevOps, and collaborate with the team to deliver features and improvements.</li>
+          </ul>
+        </article>
+        <article class="role-item">
+          <div class="role-head"><h4>Software Engineering Intern</h4><span class="dates">Jul 2026 – Oct 2026</span></div>
+          <ul>
+            <li>Joined the SmartHCM team across Flutter, .NET web services, Oracle database and web technologies.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="company">
+      <div class="company-name">
+        <h3>Black Cube Technologies</h3>
+        <p>Karachi · On-site</p>
+      </div>
+      <div class="roles">
+        <article class="role-item">
+          <div class="role-head"><h4>Jr Flutter Developer</h4><span class="dates">Sep 2025 – Jun 2026</span></div>
+          <ul>
+            <li>Built responsive, pixel-perfect screens for client mobile and web apps.</li>
+            <li>Implemented Firebase Authentication and worked with Cloud Firestore.</li>
+            <li>Managed state with Riverpod and Provider, fixed bugs and followed clean architecture.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <header>
+      <span class="label">Client projects</span>
+      <h2>Other apps I've built on</h2>
+      <p class="lead">Client work at Black Cube Technologies. The code belongs to the clients, so it isn't on my GitHub.</p>
+    </header>
+    <div class="projects">
+      <article class="project">
+        <span class="kind">AI companion · Web + Mobile</span>
+        <h3>Mila</h3>
+        <p>Built and maintained Mila Web and Mila App: responsive UI, authentication, English, Spanish and French support, light and dark themes, new features and bug fixes.</p>
+        <div class="tags"><span class="tag">Flutter Web</span><span class="tag">Auth</span><span class="tag">i18n</span><span class="tag">Theming</span></div>
+      </article>
+      <article class="project">
+        <span class="kind">Wealth &amp; finance · Mobile</span>
+        <h3>Wlthy</h3>
+        <p>Built responsive screens and authentication, worked on business logic and financial calculations, and fixed bugs to improve stability.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Auth</span><span class="tag">Business logic</span></div>
+      </article>
+      <article class="project">
+        <span class="kind">Healthcare booking · Mobile</span>
+        <h3>HomeDrip</h3>
+        <p>Added reusable UI components and a Signature Pad feature, and fixed bugs in an appointment-booking app.</p>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Reusable widgets</span><span class="tag">Signature Pad</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <header>
+      <span class="label">Skills</span>
+      <h2>What I work with</h2>
+    </header>
+    <div class="skills">
+      <div class="skill-row">
+        <h3>Mobile &amp; UI</h3>
+        <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Flutter Web</span><span class="tag">Responsive UI</span><span class="tag">Pixel-perfect UI</span><span class="tag">Riverpod</span><span class="tag">Provider</span><span class="tag">Clean Architecture</span></div>
+      </div>
+      <div class="skill-row">
+        <h3>Backend &amp; data</h3>
+        <div class="tags"><span class="tag">.NET Web Services</span><span class="tag">C#</span><span class="tag">REST APIs</span><span class="tag">Oracle SQL</span><span class="tag">Firebase Auth</span><span class="tag">Cloud Firestore</span></div>
+      </div>
+      <div class="skill-row">
+        <h3>Web</h3>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+      </div>
+      <div class="skill-row">
+        <h3>Tools</h3>
+        <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Azure DevOps</span><span class="tag">SourceTree</span><span class="tag">Visual Studio</span><span class="tag">VS Code</span></div>
+      </div>
+      <div class="skill-row">
+        <h3>Ways of working</h3>
+        <div class="tags"><span class="tag">Debugging</span><span class="tag">AI-assisted development</span><span class="tag">Problem solving</span><span class="tag">Team collaboration</span><span class="tag">Quick learning</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <header>
+      <span class="label">Education</span>
+      <h2>Study &amp; training</h2>
+    </header>
+    <div class="edu">
+      <div>
+        <h3>BS Software Engineering</h3>
+        <p>University of Karachi</p>
+        <p class="dates">Expected 2030</p>
+      </div>
+      <div>
+        <h3>Government Degree Boys College</h3>
+        <p>Gulistan-e-Johar, Karachi</p>
+        <p class="dates">2025</p>
+      </div>
+      <div>
+        <h3>Flutter App Development</h3>
+        <p>Saylani Mass IT Training (SMIT)</p>
+        <p class="dates">2024</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <span class="label">Contact</span>
+    <h2>Let's talk</h2>
+    <p class="lead">I'm open to Flutter and software engineering roles in Karachi or remote. Email is the fastest way to reach me.</p>
+    <div class="email-row">
+      <span class="email" id="email">arhamtabish1234@gmail.com</span>
+      <button class="btn" id="copy-email" type="button">Copy email</button>
+    </div>
+    <p class="copied" id="copied" aria-live="polite"></p>
+    <div class="links">
+      <a class="btn" href="https://www.linkedin.com/in/arham-tabish-149450373" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/ArhamTabish07" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Arham Tabish · Karachi, Pakistan</footer>
+</div>
+
+<script>
+document.getElementById('copy-email').addEventListener('click', function () {
+  var email = document.getElementById('email');
+  var status = document.getElementById('copied');
+  function selectText() {
+    var range = document.createRange();
+    range.selectNodeContents(email);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    status.textContent = 'Email selected. Press Ctrl+C to copy.';
+  }
+  try {
+    navigator.clipboard.writeText(email.textContent).then(function () {
+      status.textContent = 'Copied to clipboard.';
+    }, selectText);
+  } catch (e) {
+    selectText();
+  }
+});
+</script>
+</body>
+</html>
